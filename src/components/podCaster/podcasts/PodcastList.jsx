@@ -7,18 +7,18 @@ import { PodcastListItem } from "./PodcastListItem/PodcastListItem";
 import { PodcastListSearchBar } from "./PodcastListSearchBar/PodcastListSearchBar";
 //styled components
 import { Wrapper, SearchbarWrapper, ListWrapper } from "./PodcastList.styles";
-//redux
-//import { useDispatch } from "react-redux";
-//import { setLoading } from "redux/features/loading";
+//context
+import { useContext } from "react";
+import { LoadingContext } from "../../../context/LoadingContext";
 
 export const PodcastList = () => {
   const { data, isLoading } = useGetAllPodcasts();
   const [filteredPodcasts, setFilteredPodcasts] = useState([]);
-  //const dispatch = useDispatch();
+  const { setIsContextLoading } = useContext(LoadingContext);
 
-  // useEffect(() => {
-  //   dispatch(setLoading(isLoading));
-  // }, [isLoading, dispatch]);
+  useEffect(() => {
+    setIsContextLoading(isLoading);
+  }, [isLoading, setIsContextLoading]);
 
   return (
     <Wrapper>

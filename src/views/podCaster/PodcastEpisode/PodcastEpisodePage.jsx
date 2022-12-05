@@ -1,21 +1,21 @@
-import {useEffect} from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 //components
 import { PodcastEpisodeDetail } from "../../../components/podCaster";
 //hooks
 import { useGetTracksByPodcastId } from "../../../hooks/useGetTracksByPodcastId";
-//redux
-// import { useDispatch } from "react-redux";
-// import { setLoading } from "redux/features/loading";
+//context
+import { useContext } from "react";
+import { LoadingContext } from "../../../context/LoadingContext";
 
 export const PodcastEpisodePage = () => {
   const { podcastId, episodeId } = useParams();
   const { data: tracksData, isLoading } = useGetTracksByPodcastId();
-  //const dispatch = useDispatch();
+  const { setIsContextLoading } = useContext(LoadingContext);
 
   useEffect(() => {
-    //dispatch(setLoading(isLoading));
-  }, [isLoading]);
+    setIsContextLoading(isLoading);
+  }, [isLoading, setIsContextLoading]);
 
   return (
     <PodcastEpisodeDetail
