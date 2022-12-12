@@ -34,7 +34,7 @@ The player screen shows the selected episode and allows the user to play/pause t
 ## Available Scripts
 
 In the project directory, you can run:
-## IMPORTANT!
+### IMPORTANT!
 Before running the app, it's important to allow CORS in your browser. Do it by accessing to the following link: https://cors-anywhere.herokuapp.com/corsdemo
 
 ### `npm start`
