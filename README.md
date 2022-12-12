@@ -14,7 +14,7 @@ The player screen shows the selected episode and allows the user to play/pause t
 ## Technologies used
 
 - React
-- Redux RTK
+- Context API
 - React Query
 - React Router
 - Styled Components
