@@ -27,9 +27,9 @@ The player screen shows the selected episode and allows the user to play/pause t
 - **components/common**: React components that are used in more than one place
 - **components/podcaster**: React components related to the podcaster
 - **hooks**: Custom hooks used to fetch data
-- **context**: contains a subfolder, LoadingContext for controlling the loading state of the header
+- **context**: contains a subfolder, LoadingContext, for controlling the loading state of the header
 - **utils**: Utility functions, in this case for formatting table data
-- **views**: React components that represent a page
+- **views**: React components that renders a page
 
 ## Available Scripts
 
@@ -49,4 +49,4 @@ You may also see any lint errors in the console.
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
+The build is minified and the filenames include the hashes.
