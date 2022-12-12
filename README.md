@@ -27,16 +27,17 @@ The player screen shows the selected episode and allows the user to play/pause t
 - **components/common**: React components that are used in more than one place
 - **components/podcaster**: React components related to the podcaster
 - **hooks**: Custom hooks used to fetch data
-- **redux**: Redux store and a reducer/slice for controlling the loading state of the header
+- **context**: contains a subfolder, LoadingContext for controlling the loading state of the header
 - **utils**: Utility functions, in this case for formatting table data
 - **views**: React components that represent a page
 
 ## Available Scripts
 
 In the project directory, you can run:
+## IMPORTANT!
+Before running the app, it's important to allow CORS in your browser. Do it by accessing to the following link: https://cors-anywhere.herokuapp.com/corsdemo
 
 ### `npm start`
-
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
