@@ -16,25 +16,22 @@ export const PodcastListSearchBar = ({
     setFilteredPodcasts(data?.feed?.entry);
   }, [data, setFilteredPodcasts]);
 
+  useEffect(() => {
+    if (valueToSearch && valueToSearch !== "") {
+      const filteredResults = data?.feed?.entry.filter((product) =>
+        product.title.label
+          .toLowerCase()
+          .includes(valueToSearch.toLowerCase().trim())
+      );
+      setFilteredPodcasts(filteredResults);
+    }
+  }, [valueToSearch, data, setFilteredPodcasts]);
+
   const handleChange = ({ target }) => {
     if (target.value.length <= 2) {
       return setFilteredPodcasts(data?.feed?.entry);
     } else setValueToSearch(target.value);
   };
-  useEffect(() => {
-    if (valueToSearch && valueToSearch !== "") {
-      const filteredResults = data?.feed?.entry.filter(
-        (product) =>
-          product["im:name"].label
-            .toLowerCase()
-            .includes(valueToSearch.toLowerCase().trim()) ||
-          product["im:artist"].label
-            .toLowerCase()
-            .includes(valueToSearch.toLowerCase().trim())
-      );
-      setFilteredPodcasts(filteredResults);
-    }
-  }, [valueToSearch, data, setFilteredPodcasts]);
 
   return (
     <Wrapper>
