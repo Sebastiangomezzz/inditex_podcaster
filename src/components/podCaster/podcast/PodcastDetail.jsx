@@ -7,6 +7,7 @@ import { PodcastDetailCard } from "../common/PodcastDetailCard";
 //styled components
 import { Wrapper, ColumnWrapper } from "./PodcastDetail.styles";
 //hooks
+import { useGetAllPodcasts } from "../../../hooks/useGetAllPodcasts";
 import { useGetTracksByPodcastId } from "../../../hooks/useGetTracksByPodcastId";
 //context
 import { useContext } from "react";
@@ -16,13 +17,17 @@ export const PodcastDetail = () => {
   const { podcastId } = useParams();
   const { data: tracksData, isLoading } = useGetTracksByPodcastId(podcastId);
   const { setIsContextLoading } = useContext(LoadingContext);
-
+  const { data } = useGetAllPodcasts();
+  //filter the data to get the podcast with the same id as the one in the url
+  const podcast = data?.feed?.entry?.find(
+    (podcast) => podcast.id.attributes["im:id"] === podcastId
+  );
   useEffect(() => {
     setIsContextLoading(isLoading);
   }, [isLoading, setIsContextLoading]);
   return (
     <Wrapper>
-      <PodcastDetailCard podcastId={podcastId} />
+      <PodcastDetailCard podcast={podcast} podcastId={podcastId} />
       <ColumnWrapper>
         <PodcastDetailHeader tracksData={tracksData} />
         <PodcastDetailEpisodesList tracksData={tracksData} />

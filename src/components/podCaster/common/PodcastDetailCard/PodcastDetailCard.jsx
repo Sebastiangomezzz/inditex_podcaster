@@ -3,17 +3,10 @@ import { useLocation, Link } from "react-router-dom";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
-//Hooks
-import { useGetAllPodcasts } from "../../../../hooks/useGetAllPodcasts";
 //Styled components
 import { Wrapper } from "./PodcastDetailCard.styles";
 
-export const PodcastDetailCard = ({ podcastId }) => {
-  const { data } = useGetAllPodcasts();
-  //filter the data to get the podcast with the same id as the one in the url
-  const podcast = data?.feed?.entry?.find(
-    (podcast) => podcast.id.attributes["im:id"] === podcastId
-  );
+export const PodcastDetailCard = ({ podcast, podcastId }) => {
   //get the location to use it to decide if the card should be a link or not
   const location = useLocation();
   const isEpisode = location.pathname.includes("episode");

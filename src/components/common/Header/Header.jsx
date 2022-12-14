@@ -13,7 +13,6 @@ export const Header = () => {
         <Link to="/">
           <Title>Podcaster</Title>
         </Link>
-        {/* TODO implement loading with context API */}
         {isContextLoading && <StyledCircularProgress />}
       </Wrapper>
     </header>

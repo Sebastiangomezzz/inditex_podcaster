@@ -1,7 +1,7 @@
 import React, { createContext, useState } from "react";
 
 export const LoadingContext = createContext({
-  isLoading: false,
+  isContextLoading: false,
   setIsLoading: () => {},
 });
 
