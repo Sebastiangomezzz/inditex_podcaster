@@ -15,9 +15,9 @@ import { LoadingContext } from "../../../context/LoadingContext";
 
 export const PodcastDetail = () => {
   const { podcastId } = useParams();
+  const { data } = useGetAllPodcasts();
   const { data: tracksData, isLoading } = useGetTracksByPodcastId(podcastId);
   const { setIsContextLoading } = useContext(LoadingContext);
-  const { data } = useGetAllPodcasts();
   //filter the data to get the podcast with the same id as the one in the url
   const podcast = data?.feed?.entry?.find(
     (podcast) => podcast.id.attributes["im:id"] === podcastId
