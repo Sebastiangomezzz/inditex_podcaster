@@ -10,6 +10,7 @@ describe("Layout component tests", () => {
         <Layout header={<Header />} />
       </TestWrapperComponentWithMemoryRouter>
     );
-    screen.getByText(/Podcaster/i);
+    const title = screen.getByText(/Podcaster/i);
+    expect(title).not.toBeUndefined();
   });
 });

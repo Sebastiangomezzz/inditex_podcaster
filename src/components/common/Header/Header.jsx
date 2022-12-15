@@ -10,7 +10,7 @@ export const Header = () => {
   return (
     <header>
       <Wrapper>
-        <Link to="/">
+        <Link to="/" data-testId="headerLink">
           <Title>Podcaster</Title>
         </Link>
         {isContextLoading && <StyledCircularProgress />}
