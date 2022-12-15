@@ -4,30 +4,63 @@ import { Link } from "react-router-dom";
 import { useGetAllPodcasts } from "../../../hooks/useGetAllPodcasts";
 //components
 import { PodcastListItem } from "./PodcastListItem/PodcastListItem";
-import { PodcastListSearchBar } from "./PodcastListSearchBar/PodcastListSearchBar";
 //styled components
-import { Wrapper, SearchbarWrapper, ListWrapper } from "./PodcastList.styles";
+import {
+  Wrapper,
+  ListWrapper,
+  SearchbarWrapper,
+  SearchBarInnerWrapper,
+} from "./PodcastList.styles";
 //context
 import { useContext } from "react";
 import { LoadingContext } from "../../../context/LoadingContext";
+//material ui
+import TextField from "@mui/material/TextField";
+import Badge from "@mui/material/Badge";
 
 export const PodcastList = () => {
   const { data, isLoading } = useGetAllPodcasts();
-  const [filteredPodcasts, setFilteredPodcasts] = useState([]);
   const { setIsContextLoading } = useContext(LoadingContext);
+
+  const [filteredPodcasts, setFilteredPodcasts] = useState(data?.feed.entry);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     setIsContextLoading(isLoading);
   }, [isLoading, setIsContextLoading]);
 
+  useEffect(() => {
+    setFilteredPodcasts(
+      data?.feed.entry.filter((podcast) =>
+        podcast["im:name"].label
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase())
+      )
+    );
+  }, [searchTerm, data?.feed.entry]);
+
+  const handleSearchbarInputChange = ({target}) => {
+    setSearchTerm(target.value);
+  };
+
   return (
     <Wrapper>
       <SearchbarWrapper>
-        <PodcastListSearchBar
-          data={data}
-          setFilteredPodcasts={setFilteredPodcasts}
-          filteredPodcasts={filteredPodcasts}
-        />
+        <SearchBarInnerWrapper>
+          <Badge
+            badgeContent={filteredPodcasts?.length}
+            color="primary"
+            showZero
+            max={999}
+          />
+          <TextField
+            variant="outlined"
+            onChange={handleSearchbarInputChange}
+            type="text"
+            placeholder="Filter podcasts..."
+            underline="none"
+          />
+        </SearchBarInnerWrapper>
       </SearchbarWrapper>
       <ListWrapper>
         {filteredPodcasts?.length === 0 ? (
