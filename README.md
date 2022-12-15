@@ -1,5 +1,9 @@
 # Inditex Podcaster
 
+## Important note on the API use:
+
+One endpoint used in this app development is different from the one given by the examiner, since `https://itunes.apple.com/lookup?id={podcastId}` didn't return the podcast tracks required to complete the task, I've searched and found the one serving my needs and replaced it in my test.
+
 ## Requirements
 
 A SPA (Single Page Application) that allows the user to listen to the most 100 popular podcasts in the Apple Podcasts list. The user should be able to search for a podcast and listen to it.
@@ -35,7 +39,7 @@ The player screen shows the selected episode and allows the user to play/pause t
 
 In the project directory, you can run:
 ### IMPORTANT!
-- Before running the app, it's important to allow CORS in your browser. Do it by accessing to the following link: https://cors-anywhere.herokuapp.com/corsdemo
+- Before running the app, it's important to allow CORS in your browser. Do it by accessing to the following link: `https://cors-anywhere.herokuapp.com/corsdemo`
 - Check node and npm versions are, at least:
  node version >= v16.13.0
  npm version >= 8.1.0
@@ -53,3 +57,8 @@ Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
 The build is minified and the filenames include the hashes.
+
+### `npm run test`
+
+It will launch the test runner
+
