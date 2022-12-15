@@ -30,17 +30,17 @@ export const PodcastList = () => {
         />
       </SearchbarWrapper>
       <ListWrapper>
-        {filteredPodcasts?.map(
-          (podcast) => (
-            (
-              <Link
-                key={podcast.id.attributes["im:id"]}
-                to={`/podcast/${podcast.id.attributes["im:id"]}`}
-              >
-                <PodcastListItem podcast={podcast} />
-              </Link>
-            )
-          )
+        {filteredPodcasts?.length === 0 ? (
+          <h1>No results found...</h1>
+        ) : (
+          filteredPodcasts?.map((podcast) => (
+            <Link
+              key={podcast.id.attributes["im:id"]}
+              to={`/podcast/${podcast.id.attributes["im:id"]}`}
+            >
+              <PodcastListItem podcast={podcast} />
+            </Link>
+          ))
         )}
       </ListWrapper>
     </Wrapper>

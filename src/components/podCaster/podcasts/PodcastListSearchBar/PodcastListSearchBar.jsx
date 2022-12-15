@@ -27,18 +27,18 @@ export const PodcastListSearchBar = ({
     }
   }, [valueToSearch, data, setFilteredPodcasts]);
 
-  const handleChange = ({ target }) => {
-    if (target.value.length <= 2) {
+  const handleChange = ({ target: {value} }) => {
+    if (value.length <= 2) {
       return setFilteredPodcasts(data?.feed?.entry);
-    } else setValueToSearch(target.value);
+    } else setValueToSearch(value);
   };
-
   return (
     <Wrapper>
       <Badge
         badgeContent={filteredPodcasts?.length}
         color="primary"
         max={999}
+        min={0}
       />
       <TextField
         variant="outlined"

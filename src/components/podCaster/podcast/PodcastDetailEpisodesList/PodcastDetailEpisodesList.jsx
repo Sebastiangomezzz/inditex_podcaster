@@ -7,8 +7,8 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-//utils
-import { millisToHoursMinutesSeconds } from "../../../../utils/tableDataFormat";
+//moment
+import moment from "moment";
 
 export const PodcastDetailEpisodesList = ({ tracksData }) => {
   return (
@@ -51,7 +51,7 @@ export const PodcastDetailEpisodesList = ({ tracksData }) => {
                   )}
                 </TableCell>
                 <TableCell align="right">
-                  {millisToHoursMinutesSeconds(row.trackTimeMillis)}
+                  {moment.utc(row.trackTimeMillis).format("HH:mm")}
                 </TableCell>
               </TableRow>
             );
