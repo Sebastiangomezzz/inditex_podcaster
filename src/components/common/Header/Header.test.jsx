@@ -5,7 +5,6 @@ import userEvent from "@testing-library/user-event";
 import { waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 
-//mock Link component
 const mockedLink = jest.fn();
 jest.mock("react-router-dom", () => ({
   ...jest.requireActual("react-router-dom"),

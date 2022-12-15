@@ -16,6 +16,7 @@ export const PodcastDetailCard = ({ podcast, podcastId }) => {
       <Card sx={{ width: "18rem" }}>
         <CardContent sx={{ padding: "1rem" }}>
           <Link
+            data-testid="podcastDetailCardLink"
             to={isEpisode ? `/podcast/${podcastId}` : ""}
             style={{ cursor: isEpisode ? "pointer" : "auto" }}
           >
