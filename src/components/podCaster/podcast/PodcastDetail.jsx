@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { PodcastDetailHeader } from "./PodcastDetailHeader";
 import { PodcastDetailEpisodesList } from "./PodcastDetailEpisodesList";
 import { PodcastDetailCard } from "../common/PodcastDetailCard";
+import { PodcastListSkeleton } from "./PodcastListSkeleton/PodcastListSkeleton";
 //styled components
 import { Wrapper, ColumnWrapper } from "./PodcastDetail.styles";
 //hooks
@@ -29,8 +30,14 @@ export const PodcastDetail = () => {
     <Wrapper>
       <PodcastDetailCard podcast={podcast} podcastId={podcastId} />
       <ColumnWrapper>
-        <PodcastDetailHeader tracksData={tracksData} />
-        <PodcastDetailEpisodesList tracksData={tracksData} />
+        {isLoading ? (
+          <PodcastListSkeleton/>
+        ) : (
+          <>
+            <PodcastDetailHeader tracksData={tracksData} />
+            <PodcastDetailEpisodesList tracksData={tracksData} />
+          </>
+        )}
       </ColumnWrapper>
     </Wrapper>
   );

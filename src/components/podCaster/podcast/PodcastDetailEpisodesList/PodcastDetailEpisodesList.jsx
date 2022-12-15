@@ -34,6 +34,7 @@ export const PodcastDetailEpisodesList = ({ tracksData }) => {
           </TableRow>
         </TableHead>
         <TableBody>
+          
           {tracksData?.results?.map((row, i) => {
             if (i === 0) return null;
             return (
