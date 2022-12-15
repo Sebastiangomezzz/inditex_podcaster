@@ -1,4 +1,3 @@
-/* eslint-disable testing-library/no-debugging-utils */
 import { Header } from "./Header";
 import { render, screen } from "@testing-library/react";
 import { TestWrapperComponentWithMemoryRouter } from "../../../utils/test-utils/TestWrapperComponent";
@@ -31,7 +30,6 @@ describe("Header component tests", () => {
     );
     const user = userEvent.setup();
     const title = screen.getByTestId("headerLink");
-    screen.debug(title);
     user.click(title);
     await waitFor(() => expect(mockedLink).toHaveBeenCalled());
   });

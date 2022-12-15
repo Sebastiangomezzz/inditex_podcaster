@@ -50,6 +50,6 @@ describe("PodcastDetailCard component tests", () => {
         <PodcastDetailCard podcastId={podcastId} podcast={podcast} />
       </TestWrapperComponentWithMemoryRouter>
     );
-    screen.getByText(/HOW DID THIS GET MADE?/i);
+    expect(screen.getByText(/HOW DID THIS GET MADE?/i)).toBeTruthy();
   });
 });
