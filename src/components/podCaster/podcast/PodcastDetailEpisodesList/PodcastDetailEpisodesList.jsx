@@ -8,10 +8,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 //utils
-import {
-  dateFormat,
-  millisToHoursMinutesSeconds,
-} from "../../../../utils/tableDataFormat";
+import { millisToHoursMinutesSeconds } from "../../../../utils/tableDataFormat";
 
 export const PodcastDetailEpisodesList = ({ tracksData }) => {
   return (
@@ -34,7 +31,6 @@ export const PodcastDetailEpisodesList = ({ tracksData }) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          
           {tracksData?.results?.map((row, i) => {
             if (i === 0) return null;
             return (
@@ -50,7 +46,9 @@ export const PodcastDetailEpisodesList = ({ tracksData }) => {
                   </Link>
                 </TableCell>
                 <TableCell align="right">
-                  {dateFormat(row.releaseDate)}
+                  {new Intl.DateTimeFormat("en-US").format(
+                    new Date(row.releaseDate)
+                  )}
                 </TableCell>
                 <TableCell align="right">
                   {millisToHoursMinutesSeconds(row.trackTimeMillis)}
