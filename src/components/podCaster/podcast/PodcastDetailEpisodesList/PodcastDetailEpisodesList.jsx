@@ -41,6 +41,7 @@ export const PodcastDetailEpisodesList = ({ tracksData }) => {
                 <TableCell component="th" scope="row">
                   <Link
                     to={`/podcast/${row.collectionId}/episode/${row.trackId}`}
+                    data-testid="episodeLink"
                   >
                     {row.trackName}
                   </Link>
