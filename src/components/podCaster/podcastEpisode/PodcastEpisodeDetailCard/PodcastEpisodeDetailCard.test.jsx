@@ -1,6 +1,7 @@
 import { screen, render } from '@testing-library/react';
 import { TestWrapperComponentWithMemoryRouter } from '../../../../utils/test-utils/testWrapperComponent';
 import { PodcastEpisodeDetailCard } from './PodcastEpisodeDetailCard';
+import "@testing-library/jest-dom/extend-expect";
 
 describe('PodcastEpisodeDetailCard component tests', () => {
     const currentTrack = {
@@ -14,6 +15,14 @@ describe('PodcastEpisodeDetailCard component tests', () => {
         render(<PodcastEpisodeDetailCard currentTrack={currentTrack} />, {
             wrapper: TestWrapperComponentWithMemoryRouter
         });
-        screen.getByText(/test track/i);
+        const cardName = screen.getByText(/test track/i);
+        expect(cardName).toBeInTheDocument();
+    });
+    test('audio player should be visible', () => {
+        render(<PodcastEpisodeDetailCard currentTrack={currentTrack} />, {
+            wrapper: TestWrapperComponentWithMemoryRouter
+        });
+        const audioPlayer = screen.getByTestId('audioPlayer');
+        expect(audioPlayer).toBeInTheDocument();
     });
 });

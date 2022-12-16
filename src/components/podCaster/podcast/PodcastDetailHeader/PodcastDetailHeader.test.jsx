@@ -1,6 +1,7 @@
 import { screen, render } from "@testing-library/react";
 import { TestWrapperComponentWithMemoryRouter } from "../../../../utils/test-utils/testWrapperComponent";
 import { PodcastDetailHeader } from "./PodcastDetailHeader";
+import "@testing-library/jest-dom/extend-expect";
 
 describe("PodcastDetailHeader component tests", () => {
   test("should render the component", () => {
@@ -38,6 +39,7 @@ describe("PodcastDetailHeader component tests", () => {
     render(<PodcastDetailHeader tracksData={tracksData} />, {
       wrapper: TestWrapperComponentWithMemoryRouter,
     });
-    screen.getByText(/2/i);
+    const headerNumber = screen.getByText(/2/i);
+    expect(headerNumber).toBeInTheDocument();
   });
 });
